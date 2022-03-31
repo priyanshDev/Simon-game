@@ -7,7 +7,7 @@ var started = false;
 var level = 0;
 $(document).keydown(function(){
     if(!started){
-        $("#level-title").text("Level" + level);
+        $("#level-title").text("Level " + level);
         nextSequence();
         started = true;
     }
@@ -45,13 +45,14 @@ function checkAnswer(currentLevel){
 
 function nextSequence(){
     userClickedPattern =[];
-    $("#level-title").text("level" + level);
+    level++;
+    $("#level-title").text("Level " + level);
     var randomNumber = Math.floor(Math.random() * 4);
     var randomChosenColor = buttonColors[randomNumber];
      gamePattern.push(randomChosenColor);
 
      $("#" + randomChosenColor).fadeIn(100).fadeOut(100).fadeIn(100);
-     palySOund(randomChosenColor);
+     playSound(randomChosenColor);
 }
 
 function animatePress(currentColor){
